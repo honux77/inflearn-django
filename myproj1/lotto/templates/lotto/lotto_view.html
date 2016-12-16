@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+  <h1>My Lotto Page</h1>
+  {% for post in posts%}
+    <h2> {{post.title}} </h2>
+    <p> last update: {{post.update_date}} </p>
+    <p> {{post.text}} </p>
+    <p> {{post.bonus}} </p>
+  {% endfor %}
+
+
+</body>
+</html>
