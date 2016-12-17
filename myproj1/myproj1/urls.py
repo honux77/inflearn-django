@@ -20,6 +20,7 @@ from lotto import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name='lotto_index'),    
+    url(r'^$', views.index, name='lotto_index'),
     url(r'^lotto/(?P<pk>[0-9]+)/$', views.detail, name='lotto_detail'),
+    url(r'^lotto/new/$', views.lotto_new, name='lotto_new'),
 ]
