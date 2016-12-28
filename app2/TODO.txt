@@ -1,0 +1,32 @@
+# 준비
+
+0. virtualenv 활성화
+1. 프로젝트 생성
+$ django-admin startproject mysite
+
+2. 서버 시작 및 settings.py 수정 
+$ python manage.py runserver 
+$ python manage.py ryunserver 8080
+
+3. 앱 생성 
+$ python manage.py startapp polls
+
+4. 첫번째 뷰 생성
+
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
+
+5. polls/urls.py 생성 (new!)
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+]
+
+6. mysite/urls.py 수정 (new!)
+    url(r'^polls/', include('polls.urls')),
