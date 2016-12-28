@@ -1,4 +1,4 @@
-"""dj_proj1 URL Configuration
+"""mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -19,7 +19,10 @@ from lotto import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name = "lotto_main"),
-    url(r'^newlotto/$', views.post, name = "lotto_new"),
-    url(r'^lotto/(?P<pk>[0-9]+)/$', views.detail, name = "lotto_detail"),
+    url(r'^lotto/$', views.index, name='lotto'),
+    url(r'^$', views.index, name='index'),
+    url(r'^lotto/new/$', views.post, name = "new_lotto"),
+    url(r'^lotto/(?P<lottokey>[0-9]+)/detail/$', views.detail, name='detail'),
+
+
 ]

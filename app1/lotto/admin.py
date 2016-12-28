@@ -1,5 +1,5 @@
 from django.contrib import admin
 
+from .models import GuessNumbers
 # Register your models here.
-from lotto.models import GuessNumbers
 admin.site.register(GuessNumbers)
