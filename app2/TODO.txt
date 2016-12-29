@@ -4,8 +4,8 @@
 1. 프로젝트 생성
 $ django-admin startproject mysite
 
-2. 서버 시작 및 settings.py 수정 
-$ python manage.py runserver 
+2. 서버 시작 및 settings.py 수정
+$ python manage.py runserver
 $ python manage.py ryunserver 8080
 
 3. 앱 생성 
@@ -58,7 +58,7 @@ $ python manage.py migrate
 
 9. shell
 $ $ python manage.py shell
->>> from polls.models import Question, Choice   
+>>> from polls.models import Question, Choice
 >>> Question.objects.all()
 >>> from django.utils import timezone
 >>> q = Question(question_text="What's new?", pub_date=timezone.now())
@@ -71,7 +71,7 @@ $ $ python manage.py shell
 >>> Question.objects.all()
 <QuerySet [<Question: Question object>]>
 
-9. models.py 수정 
+9. models.py 수정
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
