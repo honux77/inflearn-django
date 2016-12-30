@@ -226,20 +226,16 @@ from django.conf.urls import url
 from . import views
 
 app_name = 'polls'
-urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
-    url(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
-    url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
-]
 
 - index.html 수정
 <!-- <a href="/polls/{{ question.id }}/"> -->
 <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 
+25. 
 # 2-4 
 
 22. template에 폼 추가 
+
 - detail.html 수정
 
 <h1>{{ question.question_text }}</h1>
@@ -254,3 +250,25 @@ urlpatterns = [
 {% endfor %}
 <input type="submit" value="Vote" />
 </form>
+
+23. POST 처리 views.py 수정
+
+from .models import Question, Choice
+
+def vote(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': "You didn't select a choice.",
+        })
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
