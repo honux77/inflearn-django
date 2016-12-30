@@ -1,4 +1,4 @@
-# 준비
+# 2-1 준비
 
 0. virtualenv 활성화
 1. 프로젝트 생성
@@ -36,10 +36,16 @@ urlpatterns = [
 settings.py 수정
 python manage.py migrate
 
-8. models.py 수정
-polls/models.py
-from django.db import models
 
+# 2-2 Model 
+
+ORM이란? Object Relational Mapping 
+
+8. models.py 수정
+
+Model 변경의 3단계: models.py 수정 - makemigrations - migrate  
+
+polls/models.py
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -100,6 +106,8 @@ class Choice(models.Model):
 >>> Question.objects.get(pk=1)
 >>> q = Question.objects.get(pk=1)
 >>> q.was_published_recently()
+
+10. shell again: 2
 
 >>> q.choice_set.all()
 >>> q.choice_set.create(choice_text='Not much', votes=0)
