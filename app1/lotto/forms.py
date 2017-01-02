@@ -5,4 +5,4 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = GuessNumbers
-        fields = ('name', 'text', 'numbers',)
+        fields = ('name', 'text',)

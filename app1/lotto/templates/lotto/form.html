@@ -15,8 +15,8 @@
   <h1>My Little New Lotto</h1>
   </div>
   <div class="container lotto">
-    <form method="POST" class='post-form'>
-      {% csrf_token %}
+    <form method="POST" class="post-form">
+      {%csrf_token%}
       {{form.as_p}}
       <button type="submit" class="save btn btn-default">Save</button>
     </form>

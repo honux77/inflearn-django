@@ -7,19 +7,20 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link href="//fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/lotto.css' %}">
+  <link rel="stylesheet" href="{% static 'css/lotto.css'%}">
 </head>
 
 <body>
   <div class="page-header">
-  <h1>My Lotto Page
-    <a href="{% url 'lotto_new' %}"<span class="glyphicon glyphicon-plus btn btn-default"></span></a></h1>
+  <h1>My Lotto Page</h1>
+  <h2> <a href="{% url 'new_lotto'%}">
+    <span class="glyphicon glyphicon-plus btn btn-default"></span></a></h2>
   </div>
   <div class="container lotto">
-    {% for lotto in lottos%}
-    <h2><a href="{% url 'lotto_detail' pk=lotto.pk %}">{{lotto.text}}</a></h2>
-    <p> last update: {{lotto.update_date}} by {{lotto.name}}</p>
-    <p> {{lotto.lottos|linebreaksbr }}</p>
+    {% for lotto in lottos %}
+    <h2><a href="{% url 'detail' lottokey=lotto.pk %}">{{lotto.text}}</a></h2>
+    <p> {{lotto.update_date}}</p>
+    <p> {{lotto.lottos|linebreaksbr}}</p>
     {% endfor %}
   </div>
 </body>
