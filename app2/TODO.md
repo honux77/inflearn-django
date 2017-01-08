@@ -1,5 +1,5 @@
 # App2
-## 2-1 준비 
+## 2-1 준비
 0. virtualenv 활성화
 1. 프로젝트 생성
 $ django-admin startproject mysite
@@ -8,11 +8,11 @@ $ django-admin startproject mysite
 $ python manage.py runserver
 $ python manage.py ryunserver 8080
 
-3. 앱 생성 
+3. 앱 생성
 $ python manage.py startapp polls
 
-4. 첫번째 뷰 
-- views.py 수정 
+4. 첫번째 뷰
+- views.py 수정
 from django.http import HttpResponse
 
 def index(request):
@@ -30,13 +30,13 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
 
 7. app 등록
-- settings.py 수정: polls app 등록 
+- settings.py 수정: polls app 등록
 
 $ python manage.py migrate
 
-# 2-2 Model 
+# 2-2 Model
 
-ORM이란? Object Relational Mapping 
+ORM이란? Object Relational Mapping
 
 8. models.py 수정
 
@@ -121,20 +121,20 @@ class Choice(models.Model):
 >>> c = q.choice_set.filter(choice_text__startswith='Just hacking')
 >>> c.delete()
 
-13. admin 페이지 사용하기 
+13. admin 페이지 사용하기
 
 $ python manage.py createsuperuser
 
-- admins.py 수정 
+- admins.py 수정
 
 from .models import Question, Choice
 
 admin.site.register(Question)
 admin.site.register(Choice)
 
-# 2-3 
+# 2-3
 
-14. views.py 수정 
+14. views.py 수정
 
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)
@@ -146,7 +146,7 @@ def results(request, question_id):
 def vote(request, question_id):
     return HttpResponse("You're voting on question %s." % question_id)
 
-15. urls.py 수정 
+15. urls.py 수정
 
 from django.conf.urls import url
 
@@ -174,7 +174,7 @@ def index(request):
 
 17. template 만들기
 
-- polls/template/polls/index.html 
+- polls/template/polls/index.html
 
 {% if latest_question_list %}
     <ul>
@@ -193,13 +193,13 @@ def index(request):
     context = {'latest_question_list': latest_question_list}
     return render(request, 'polls/index.html', context)
 
-19. 404 처리하기 
+19. 404 처리하기
 
 - polls/detail.html 생성
 
 {{ question }}
 
-- views.py 수정 
+- views.py 수정
 
 from django.http import Http404
 from .models import Question
@@ -211,7 +211,7 @@ def detail(request, question_id):
         raise Http404("Question does not exist")
     return render(request, 'polls/detail.html', {'question': question})
 
-20. 404 shortcut 
+20. 404 shortcut
 from django.shortcuts import get_object_or_404, render
 from .models import Question
 
@@ -219,7 +219,7 @@ def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/detail.html', {'question': question})
 
-21. 하드코딩 url 수정하기 
+21. 하드코딩 url 수정하기
 - urls.py 수정
 
 from django.conf.urls import url
@@ -231,10 +231,10 @@ app_name = 'polls'
 <!-- <a href="/polls/{{ question.id }}/"> -->
 <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 
-25. 
-# 2-4 
+25.
+# 2-4
 
-22. template에 폼 추가 
+22. template에 폼 추가
 
 - detail.html 수정
 
@@ -254,6 +254,7 @@ app_name = 'polls'
 23. POST 처리 views.py 수정
 
 from .models import Question, Choice
+from django.shortcut import redirect
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -271,4 +272,5 @@ def vote(request, question_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        # return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        return redirect('polls:results',question.id)
