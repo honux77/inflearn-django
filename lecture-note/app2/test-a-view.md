@@ -9,12 +9,12 @@
 >>> client = Client()
 
 >>> from django.urls import reverse
+>>> reverse('polls:index')
+>>> reverse('polls:detail', kwargs = {'pk':10})
 >>> response = client.get(reverse('polls:index'))
 >>> response.status_code
 >>> response.content
 >>> response.context['latest_question_list']
-<QuerySet [<Question: What's up?>]>
-
 ```
 
 ## polls/views.py 업데이트

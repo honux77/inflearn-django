@@ -1,7 +1,6 @@
 # 테스트 자동화하기
 
 ## 버그 확인
-- 현재 앱은 아직 시작하지 않은 투표도 보여지는 버그가 존재합니다.
 ```shell
 $ python manage.py shell 
 >>> import datetime
