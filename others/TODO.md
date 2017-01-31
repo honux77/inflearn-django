@@ -1,9 +1,6 @@
 - custom 404
-- class based view
+- class based view: https://docs.djangoproject.com/en/1.10/topics/class-based-views/intro/
 - login implementation
-- oauth 
-- per user pages 
-- how to change DB 
-
-
-
+- oauth
+- per user pages
+- how to change DB
