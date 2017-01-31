@@ -19,7 +19,9 @@
 
 ## polls/views.py 업데이트
 
-```
+```python
+from django.utils import timezone
+
 def get_queryset(self):
     return Question.objects.filter(
         pub_date__lte=timezone.now()
