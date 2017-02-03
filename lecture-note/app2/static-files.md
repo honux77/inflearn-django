@@ -31,3 +31,35 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ```
 $ python manage.py collectstatic
 ```
+
+# custom admin template
+
+## settings.py 수정
+```python
+INSTALLED_APPS = [
+    'polls',
+    'django.contrib.admin',
+    # ...
+]
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # ...
+    }
+]
+```
+
+## polls/templates/admin/base_site.html 생성
+```
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+```
