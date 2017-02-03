@@ -124,7 +124,6 @@ $ python -c "import django; print(django.__path__)"
 {% extends 'polls/base.html' %}
 
 {% block content %}
-<div class="jumbotron">
     <!-- 
         ohter html here
     -->
