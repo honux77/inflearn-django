@@ -51,7 +51,15 @@ TEMPLATES = [
 ]
 ```
 
+## 장고 기본 디렉토리 확인
+```bash
+$ python -c "import django; print(django.__path__)"
+```
+
 ## polls/templates/admin/base_site.html 생성
+
+- 원본 파일은 django/contrib/admin/templates 에 저장되어 있음
+
 ```
 {% extends "admin/base.html" %}
 
