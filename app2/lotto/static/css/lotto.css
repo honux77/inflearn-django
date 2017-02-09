@@ -1,0 +1,18 @@
+.page-header {
+    background-color: #652596;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+    font-family: 'Space Mono', monospace;
+}
+
+.page-header h1 {
+  color: #FFFFFF;
+}
+
+.container {
+  font-family: 'Space Mono', monospace;
+}
+
+.container h2 {
+  color: #b9f442;
+}

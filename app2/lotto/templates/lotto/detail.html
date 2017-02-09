@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ko">
+<head>
+  <title>My Little Lotto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="//fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/lotto.css'%}">
+</head>
+
+<body>
+  <div class="page-header">
+  <h1>My Lotto Page</h1>
+  </div>
+  <div class="container lotto">
+    <h2>{{lotto.text}}</h2>
+    <p> by {{lotto.name}}</p>
+    <p> {{lotto.update_date}}</p>
+    <p> {{lotto.lottos|linebreaksbr}}</p>
+  </div>
+</body>
+</html>
