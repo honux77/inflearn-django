@@ -20,5 +20,7 @@ from polls import views
 urlpatterns = [
     url(r'^$', views.main, name = 'main'),
     url(r'^admin/', admin.site.urls),
-    url(r'^polls/', include('polls.urls'))
+    url(r'^polls/', include('polls.urls')),
+    url(r'^lotto/', include('lotto.urls'))
+
 ]
