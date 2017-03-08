@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from kilogram import views
+from kilogram import views as kilogram_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name = "root"),
-    url(r'^kilogram/', include('kilogram.urls')),
+    url(r'^$', kilogram_views.index, name = "root"),
+    url(r'^kilogram/', include('kilogram_views.urls')),
 ]
