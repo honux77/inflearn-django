@@ -42,7 +42,9 @@ DATABASES = {
         },
     }
 }
-
+```
+## my.cnf 생성 
+```
 # my.cnf
 [client]
 database = djangodb
