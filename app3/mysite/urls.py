@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', kilogram_views.IndexView.as_view(), name = 'root'),
     url(r'^kilogram/', include('kilogram.urls')),
-
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
