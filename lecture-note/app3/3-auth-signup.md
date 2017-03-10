@@ -9,7 +9,7 @@
 
 ```
 urlpatterns = [
-  url(r'^accounts/signup/$', kilogram_views.CreateUserView.as_view(), name = 'signup'),
+  url(r'^accounts/signup$', kilogram_views.CreateUserView.as_view(), name = 'signup'),
   url(r'^accounts/login/done$', kilogram_views.ResisteredView.as_view(), name = 'create_user_done')
 ]
 ```
@@ -36,7 +36,7 @@ class CreateUserForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
     def save(self, commit=True):
-        user = super(RegisterUserForm, self).save(commit=False)
+        user = super(CreateUserForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
         if commit:
             user.save()
@@ -55,6 +55,8 @@ from django.views.generic.edit import CreateView
 # from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 
+from .forms import CreateUserForm
+
 class CreateUserView(CreateView):
     template_name = 'registration/signup.html'
     form_class =  CreateUserForm
@@ -65,9 +67,45 @@ class RegisteredView(TemplateView):
     template_name = 'registration/signup_done.html'
 ```
 
+## login.html 에 내용 추가 
+
+- 아래 내용 추가 
+```
+<br>
+<p>아이디가 없으신가요? <a href="{% url 'signup'%}">회원가입</a></p>
+```
+
 ## template 생성
 
-RegisteredView에서 사용할 template을 만들어 줍니다.
+CreateUserView와 RegisteredView에서 사용할 template을 만들어 줍니다.
+
+- registration/signup.html
+
+```
+{% extends 'kilogram/base.html' %}
+{% block content %}
+
+<form method="post" action="{% url 'signup' %}">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">회원가입</button>
+</form>
+
+{% endblock %}
+```
+
+- registration/signup_done.html
+```
+{% extends 'kilogram/base.html' %}
+{% block content %}
+
+<h2>회원가입이 완료되었습니다. </h2>
+<br>
+<a href="{% url 'login'%}">로그인하기</a>
+
+{% endblock %}
+
+```
 
 
 ## 참고 링크
