@@ -16,9 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from kilogram import views as kilogram_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', kilogram_views.index, name = "root"),
-    url(r'^kilogram/', include('kilogram_views.urls')),
+    url(r'^$', kilogram_views.IndexView.as_view(), name = "root"),
+    url(r'^kilogram/', include('kilogram.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/signup/$', kilogram_views.CreateUserView.as_view(), name = 'signup'),
+    url(r'^accounts/login/done$', kilogram_views.ResisteredView.as_view(), name = 'create_user_done')
+
 ]

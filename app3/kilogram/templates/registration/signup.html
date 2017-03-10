@@ -1,0 +1,14 @@
+{% extends 'kilogram/base.html' %}
+{% block content %}
+
+{% if form.errors %}
+<p>ID나 비밀번호가 일치하지 않습니다.</p>
+{% endif %}
+
+<form method="post" action="{% url 'signup' %}">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">회원가입</button>
+</form>
+
+{% endblock content %}
