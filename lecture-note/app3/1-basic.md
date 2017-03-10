@@ -44,7 +44,7 @@ from kilogram import views as kilogram_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', kilogram_views.IndexView.as_view(), name = "root"),
-    url(r'^kilogram/', include('kilogram_views.urls')),
+    url(r'^kilogram/', include('kilogram.urls')),
 ]
 ```
 
@@ -61,7 +61,10 @@ class IndexView(TemplateView):
 ```
 
 ## 기본 템플릿 작성
+
 - base.html
+
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -101,8 +104,8 @@ class IndexView(TemplateView):
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{%url 'login' %}"> <span class="glyphicon glyphicon-user"></span> Login</a></li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="#"> <span class="glyphicon glyphicon-user"></span> Login</a></li>
+        <li><a href="#">Logout</a></li>
         <li><a href="{% url 'admin:index' %}">Admin</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -130,5 +133,5 @@ class IndexView(TemplateView):
 
 <h1>Kilogram Main Page</h1>
 
-{% endblock content %}
+{% endblock %}
 ```
