@@ -18,10 +18,11 @@ from django.contrib import admin
 from kilogram import views as kilogram_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', kilogram_views.IndexView.as_view(), name = 'root'),
+    url(r'^$', login_required(kilogram_views.IndexView.as_view()), name = 'root'),
     url(r'^kilogram/', include('kilogram.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/signup$', kilogram_views.CreateUserView.as_view(), name = 'signup'),
