@@ -123,3 +123,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Auth settings
 LOGIN_REDIRECT_URL = '/kilogram/'
+
+# media url
+MEDIA_URL = '/files/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
