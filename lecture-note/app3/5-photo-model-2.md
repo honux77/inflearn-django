@@ -75,4 +75,3 @@ next parameter의 값은 아래와 같은 url을 통해서 전달 받을 수 있
 ```
 <input type="hidden" name="next" value="{{next}}" />
 ``` 
-
