@@ -55,6 +55,19 @@ from .models import Photo
 # Register your models here.
 admin.site.register(Photo)
 ```
+
+## media url 을 static url로 설정하기
+
+- **mysite/urls.py 수정**
+
+```
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+```
+
 ## upload form 작성
 
 - kilogram/forms.py 추가
@@ -119,18 +132,6 @@ def upload(request):
 
 - admin을 통한 upload 확인
 - shell을 통한 upload 확인
-
-## media url 을 static url로 설정하기
-
-- **mysite/urls.py 수정**
-
-```
-from django.conf import settings
-from django.conf.urls.static import static
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-```
 
 ## 기본 view 및 템플릿 수정
 
