@@ -21,6 +21,8 @@ from django.contrib.auth.decorators import login_required
 - kilogram/views.py 수정
 
 ```python
+from  django.views.generic.list import ListView
+
 class IndexView(ListView):
     # model = Photo
     context_object_name = 'user_photo_list'
@@ -78,7 +80,6 @@ class IndexView(ListView):
 {% endblock %}
 
 ```
-
 
 ## 참고링크
 - https://docs.djangoproject.com/en/1.10/ref/models/fields/
