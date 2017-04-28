@@ -11,7 +11,9 @@ class Text:
 class Article(Text):
     def __init__(self, title, text):
         self.title = title
-        self.text = text
+        # self.text = text
+        # Text.text = text
+        super.text = text
 
     def __str__(self):
         return "Article: %s" % self.title
@@ -41,3 +43,4 @@ user.write(t)
 user.write(t2)
 print(t, t.getLength())
 print(user, user.getNumArticles())
+print(t.text, t2.text)
