@@ -2,7 +2,7 @@
 
 참고링크: https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-## css 파일 만들기 
+## css 파일 만들기
 
 - polls/static/polls/style.css
 ```css
@@ -15,7 +15,7 @@ body {
     background: white url("images/background.gif") no-repeat right bottom;
 }
 ```
-## css 파일 적용 
+## css 파일 적용
 ```html
 {% load static %}
 
@@ -27,7 +27,7 @@ body {
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ```
 
-## collectstatic 명령 수행 및 변경사항 확인 
+## collectstatic 명령 수행 및 변경사항 확인
 ```
 $ python manage.py collectstatic
 ```
@@ -114,7 +114,7 @@ $ python -c "import django; print(django.__path__)"
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
   </html>
 ```
@@ -124,8 +124,8 @@ $ python -c "import django; print(django.__path__)"
 {% extends 'polls/base.html' %}
 
 {% block content %}
-    <!-- 
+    <!--
         ohter html here
     -->
 {% endblock content %}
-``` 
+```
