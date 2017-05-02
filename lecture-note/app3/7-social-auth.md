@@ -51,6 +51,29 @@ INSTALLED_APPS = (
 
 SITE_ID = 1
 
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'friends',
+            'verified',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'ko_KR',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.9',
+    }
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ```
 
 # urls.py 수정
@@ -72,8 +95,8 @@ developer.facebook.com 을 이용해서 로그인 앱 생성
 ID 및 키값 저장
 
 ## admin 사이트를 이용한 레코드 추가
-Site에 127.0.0.1:8000 추가
-Social App 추가
+- Site에 127.0.0.1:8000, Kilogram 추가
+- Social Application에 레코드 추가
 
 
 
@@ -87,10 +110,10 @@ https://github.com/pennersr/django-allauth/tree/master/allauth/templates
 수정해 주어야 하는 url들은 브라우저에서 확인할 수 있다.
 
 - kilogram/base.html을 account/base.html 로 이동
-- base.html의 링크들를 변경
+- base.html의 url들을 변경
+- photo_list의 base.html 주소 변경 
 
-```
+> login -> account_login
 
-```
+> logout -> account_logout
 
-account/base.html 생성
