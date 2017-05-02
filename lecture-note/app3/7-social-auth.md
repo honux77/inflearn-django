@@ -1,4 +1,4 @@
-# social-auth를 이용한 facebook login 구현하기 
+# social-auth를 이용한 facebook login 구현하기
 
 ## 패키지 설치
 
@@ -11,11 +11,11 @@ github에서 django auth로 검색 후 가장 많은 스타를 받은 프로젝�
 $ pip install django-allauth
 ```
 
-## settings.py 수정 
+## settings.py 수정
 
 TEMPLATES 부분을 수정합니다.
 ```python
-TEMPLATES = [ 
+TEMPLATES = [
 #...
 'context_processors': [
                 # Already defined Django-related contexts here
@@ -53,7 +53,7 @@ SITE_ID = 1
 
 ```
 
-# urls.py 수정 
+# urls.py 수정
 ```
 urlpatterns = [
     # ...
@@ -69,19 +69,28 @@ $ python manage.py migrate
 
 ## 페이스북 앱 생성
 developer.facebook.com 을 이용해서 로그인 앱 생성
-ID 및 키값 저장 
+ID 및 키값 저장
 
 ## admin 사이트를 이용한 레코드 추가
 Site에 127.0.0.1:8000 추가
-Social App 추가 
+Social App 추가
 
-## url 링크 수정
-기존의 링크들로 인해서 오류가 발생하는데 이것들을 수정해 주어야 한다. 
-수정해 주어야 하는 url들은 브라우저에서 확인할 수 있다. 
-registant/base.html 수정
 
-## 템플릿 수정 
+
+## 템플릿 수정
+
 https://django-allauth.readthedocs.io/en/latest/templates.html
+
 https://github.com/pennersr/django-allauth/tree/master/allauth/templates
+
+기존의 링크들로 인해서 오류가 발생하는데 이것들을 수정해 주어야 한다.
+수정해 주어야 하는 url들은 브라우저에서 확인할 수 있다.
+
+- kilogram/base.html을 account/base.html 로 이동
+- base.html의 링크들를 변경
+
+```
+
+```
 
 account/base.html 생성
