@@ -72,7 +72,6 @@ SOCIALACCOUNT_PROVIDERS = {
         'VERSION': 'v2.9',
     }
 }
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ```
 
@@ -117,3 +116,6 @@ https://github.com/pennersr/django-allauth/tree/master/allauth/templates
 
 > logout -> account_logout
 
+## 주의사항 
+
+실제로 서비스에서 적용할 때는 페이스북 설정에서 앱을 검수(?) 상태로 변경해야 하고, response_url도 도메인에 맞게 수정해 주어야 정상 작동한다. 
