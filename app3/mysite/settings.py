@@ -38,13 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',  # Allauth
+    'django.contrib.sites', #for allauth
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-
+    'extra_views',
 ]
 
 MIDDLEWARE = [
@@ -175,3 +175,5 @@ SOCIALACCOUNT_PROVIDERS = {
 
 # if you want use this, search gmail stmp
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+THUMBNAIL_SIZE = 200
