@@ -110,7 +110,7 @@ templates/kilogram/profile.html
         <h2>{{profile_user.profile.nickname}}</h2>
         {% endif %}
         {% if user == profile_user %}
-        <a href="{% url 'kilogram:profile_update' %}">
+        <a href="#">
             <button type="button" class="btn btn-default">프로필 편집</button></a></h2>
         {% endif %}
         <h3> username: {{profile_user.username}} <br>
