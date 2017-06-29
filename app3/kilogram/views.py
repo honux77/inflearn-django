@@ -33,11 +33,15 @@ class IndexView(ListView):
         return user.photo_set.all().order_by('-pub_date')
 
 
-class ProfileView(DetailView):
-    context_object_name = 'profile_user'
-    model = User
-    template_name = 'kilogram/profile.html'
-
+@login_required
+def profile(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    # get 20 public photo only
+    photos = user.photo_set.filter(is_public=True)[:20]
+    for photo in photos:
+        print(photo)
+    context = {"profile_user": user, "photos": photos}
+    return render(request, 'kilogram/profile.html', context)
 
 class ProfileUpdateView(View):
     def get(self, request):

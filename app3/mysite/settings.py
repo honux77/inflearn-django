@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    'extra_views',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [

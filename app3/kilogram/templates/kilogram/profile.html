@@ -2,6 +2,7 @@
 {% block content %}
 
 {% load staticfiles %}
+{% load thumbnail %}
 
 <div class="row">
     <div class="col-xs-6 col-md-3">
@@ -26,6 +27,16 @@
             {% endif %}
         </h3>
     </div>
+</div> <!-- end row -->
+<p> </p>
+<div class="row">
+    {%for photo in photos %}
+    <div class="col-xs-6 col-md-4">
+        {% thumbnail photo.image "300x300" crop="center" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+        {% endthumbnail %}
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+from sorl.thumbnail import ImageField
 
 def user_path(instance, filename):
     from random import choice
@@ -21,9 +22,13 @@ def profile_path(instance, filename):
 class Photo(models.Model):
     image = models.ImageField(upload_to=user_path)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
-    thumbnail_image = models.ImageField(blank=True)
     comment = models.CharField(max_length=255)
     pub_date = models.DateTimeField(auto_now_add=True)
+    is_public = models.BooleanField(default=False)
+
+    def __str__(self):
+        return '{} {} {}'.format(self.owner.username, self.comment, self.is_public)
+
 
 
 class Profile(models.Model):
