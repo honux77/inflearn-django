@@ -2,3 +2,7 @@ a {
     color: green;
     text-decoration: none;
 }
+
+.round {
+  border-radius: 50%;
+}

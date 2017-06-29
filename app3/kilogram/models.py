@@ -16,6 +16,12 @@ def user_path(instance, filename):
 class Photo(models.Model):
     image = models.ImageField(upload_to = user_path)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
-    thumnail_image = models.ImageField(blank = True)
+    thumbnail_image = models.ImageField(blank = True)
     comment = models.CharField(max_length = 255)
     pub_date = models.DateTimeField(auto_now_add = True)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    nickname = models.CharField(max_length = 64)
+    profile_photo = models.ImageField(blank=True)

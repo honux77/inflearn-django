@@ -15,8 +15,10 @@ class Photo(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    photo = models.ImageField(blank=True)
+    profile_photo = models.ImageField(blank=True)
+    nickname = models.CharField(max=64)
 ```
+
 ## admin.py에 모델 추가
 - User에 모델과 프로파일이 한꺼번에 보이도록 수정
 - 기존 앱을 만들 때 사용했던 `StackedInline`을 사용한다.
@@ -53,6 +55,7 @@ admin.site.register(User, CustomUserAdmin)
 
 ```
 from django.contrib.auth.models import User
+from django.views.generic.detail import DetailView
 
 class ProfileView(DetailView):
     context_object_name = 'profile_user'

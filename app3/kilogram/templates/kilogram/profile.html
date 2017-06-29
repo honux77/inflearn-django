@@ -1,0 +1,31 @@
+{% extends 'account/base.html' %}
+{% block content %}
+
+{% load staticfiles %}
+
+<div class="row">
+    <div class="col-xs-6 col-md-3">
+        {% if profile_user.profile.profile_photo %}
+        <img class="round" src="{{profile_user.profile.profile_photo.url}}" width="200"> <br>
+        {% else %}
+        <img class="round" src="{% static 'kilogram/images/photo.jpg' %}" width="200"> <br>
+        {% endif %}
+    </div>
+
+    <div class="col-xs-6 col-md-3">
+        {% if profile_user.profile.nickname %}
+        <h2>{{profile_user.profile.nickname}}</h2>
+        {% endif %}
+        {% if user == profile_user %}
+        <a href="#">
+            <button type="button" class="btn btn-default">프로필 편집</button></a></h2>
+        {% endif %}
+        <h3> username: {{profile_user.username}} <br>
+            {% if profile_user.first_name is not None %}
+            name: {{profile_user.first_name}} {{profile_user.last_name}} <br>
+            {% endif %}
+        </h3>
+    </div>
+</div>
+
+{% endblock %}

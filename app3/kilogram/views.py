@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
-# from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .forms import CreateUserForm, UploadForm
 # Create your views here.
@@ -31,11 +32,7 @@ class IndexView(ListView):
         user = self.request.user
         return user.photo_set.all().order_by('-pub_date')
 
-class CreateUserView(CreateView):
-    template_name = 'registration/signup.html'
-    form_class = CreateUserForm
-    # form_class = UserCreationForm
-    success_url = reverse_lazy('create_user_done')
-
-class RegisteredView(TemplateView):
-    template_name = 'registration/signup_done.html'
+class ProfileView(DetailView):
+    context_object_name = 'profile_user'
+    model = User
+    template_name = 'kilogram/profile.html'
