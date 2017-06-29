@@ -48,7 +48,7 @@ class ProfileUpdateView(View):
             profile = user.profile
             profile_form = ProfileForm(initial={
                 'nickname': user.profile.nickname,
-                'profile_photo': profile
+                'profile_photo': profile.profile_photo,
             })
         else:
             profile_form = ProfileForm()
@@ -83,7 +83,13 @@ class ProfileUpdateView(View):
 url(r'^profile/update/$', login_required(views.ProfileUpdateView.as_view()),
   name='profile_update'),
 ```
+## templates 수정
 
+kilogram/templates/kilogram/profile.html 
+```
+        {% if user == profile_user %}
+        <a href="{% url 'kilogram:profile_update' %}">
+```
 ## templates 생성
 
 kilogram/templates/kilogram/profile_update.html
