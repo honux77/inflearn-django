@@ -2,6 +2,7 @@
 {% block content %}
 
 {% load staticfiles %}
+{% load thumbnail %}
 
 <div class="row">
     <div class="col-xs-6 col-md-3">
@@ -20,12 +21,21 @@
         <a href="{% url 'kilogram:profile_update' %}">
             <button type="button" class="btn btn-default">프로필 편집</button></a></h2>
         {% endif %}
-        <h3> username: {{profile_user.username}} <br>
+        <h3> {{profile_user.username}} <br>
             {% if profile_user.first_name is not None %}
-            name: {{profile_user.first_name}} {{profile_user.last_name}} <br>
+            {{profile_user.first_name}} {{profile_user.last_name}} <br>
             {% endif %}
         </h3>
     </div>
+</div> <!-- endof row -->
+<div class="row">
+  {%for photo in photos %}
+  <div class="col-xs-6 col-md-4">
+      {% thumbnail photo.image "300x300" crop="center" as im %}
+      <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+      {% endthumbnail %}
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
