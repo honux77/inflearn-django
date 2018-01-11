@@ -1,7 +1,7 @@
 # urls.py 추가
 
 ```python
-url(r'^lotto/(?P<lottokey>[0-9]+)/$', views.detail, name = "lotto_detail"),
+url(r'^lotto/(?P<lottokey>[0-9]+)/$', views.detail, name = "detail"),
 ```
 
 # views.py 수정
